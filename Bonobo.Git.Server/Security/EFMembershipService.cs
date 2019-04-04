@@ -6,12 +6,13 @@ using Bonobo.Git.Server.Models;
 using System.Security.Cryptography;
 using System.Data.Entity.Core;
 using Microsoft.Practices.Unity;
-using Serilog;
+using NLog;
 
 namespace Bonobo.Git.Server.Security
 {
     public class EFMembershipService : IMembershipService
     {
+        static ILogger Logger = LogManager.GetCurrentClassLogger();
         [Dependency]
         public Func<BonoboGitServerContext> CreateContext { get; set; }
 
@@ -45,7 +46,7 @@ namespace Bonobo.Git.Server.Security
             if (String.IsNullOrEmpty(username)) throw new ArgumentException("Value cannot be null or empty.", "username");
             if (String.IsNullOrEmpty(password)) throw new ArgumentException("Value cannot be null or empty.", "password");
 
-            Log.Verbose("EF: Validating user {UserName}", username);
+            Logger.Debug("EF: Validating user {UserName}", username);
 
             username = username.ToLowerInvariant();
             using (var database = CreateContext())
@@ -56,12 +57,12 @@ namespace Bonobo.Git.Server.Security
                     var result = _passwordService.ComparePassword(password, username, user.PasswordSalt, user.Password)
                         ? ValidationResult.Success
                         : ValidationResult.Failure;
-                    Log.Verbose("EF: User {UserName} validation result {Result}", username, result);
+                    Logger.Debug("EF: User {UserName} validation result {Result}", username, result);
                     return result;
                 }
                 else
                 {
-                    Log.Warning("EF: Failed to find user {UserName}", username);
+                    Logger.Warn("EF: Failed to find user {UserName}", username);
                 }
             }
             return ValidationResult.Failure;

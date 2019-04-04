@@ -19,9 +19,11 @@ using System.DirectoryServices.AccountManagement;
 using Microsoft.Practices.Unity;
 using Serilog;
 using Microsoft.Owin.Security;
+using Bonobo.Git.Server.Infrastructure;
 
 namespace Bonobo.Git.Server.Controllers
 {
+    [LogFilter]
     public class AccountController : Controller
     {
         [Dependency]

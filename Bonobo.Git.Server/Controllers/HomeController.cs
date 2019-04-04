@@ -20,11 +20,15 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Practices.Unity;
 using Bonobo.Git.Server.Owin.Windows;
 using System.Configuration;
+using NLog;
+using Bonobo.Git.Server.Infrastructure;
 
 namespace Bonobo.Git.Server.Controllers
 {
+    [LogFilter]
     public class HomeController : Controller
     {
+        static ILogger Logger = LogManager.GetCurrentClassLogger();
         [Dependency]
         public IMembershipService MembershipService { get; set; }
 
@@ -178,6 +182,7 @@ namespace Bonobo.Git.Server.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOn(LogOnModel model)
         {
+            Logger.Info($"LogOn: {model.Username} {model.ReturnUrl}");
             if (ModelState.IsValid)
             {
                 ValidationResult result = MembershipService.ValidateUser(model.Username, model.Password);

@@ -6,6 +6,7 @@ using Bonobo.Git.Server.Configuration;
 using Bonobo.Git.Server.Data;
 using Bonobo.Git.Server.Git;
 using Bonobo.Git.Server.Git.GitService;
+using Bonobo.Git.Server.Infrastructure;
 using Bonobo.Git.Server.Models;
 using Bonobo.Git.Server.Security;
 using Ionic.Zlib;
@@ -17,6 +18,7 @@ namespace Bonobo.Git.Server.Controllers
 {
     [GitAuthorize]
     [RepositoryNameNormalizer("repositoryName")]
+    [LogFilter]
     public class GitController : Controller
     {
         [Dependency]

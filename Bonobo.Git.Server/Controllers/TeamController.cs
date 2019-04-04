@@ -9,9 +9,11 @@ using Bonobo.Git.Server.Security;
 using Bonobo.Git.Server.App_GlobalResources;
 
 using Microsoft.Practices.Unity;
+using Bonobo.Git.Server.Infrastructure;
 
 namespace Bonobo.Git.Server.Controllers
 {
+    [LogFilter]
     public class TeamController : Controller
     {
         [Dependency]

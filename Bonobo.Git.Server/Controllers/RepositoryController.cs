@@ -16,9 +16,11 @@ using Ionic.Zip;
 using Microsoft.Practices.Unity;
 using MimeTypes;
 using System.Security.Principal;
+using Bonobo.Git.Server.Infrastructure;
 
 namespace Bonobo.Git.Server.Controllers
 {
+    [LogFilter]
     public class RepositoryController : Controller
     {
         [Dependency]

@@ -159,6 +159,9 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
@@ -214,6 +217,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -320,6 +324,7 @@
     <Compile Include="Helpers\ADHelper.cs" />
     <Compile Include="Helpers\MembershipHelper.cs" />
     <Compile Include="Helpers\RepositoryCommitModelHelpers.cs" />
+    <Compile Include="Infrastructure\LogFilterAttribute.cs" />
     <Compile Include="Models\RepositoryCommitTitle.cs" />
     <Compile Include="Owin\NativeMethods.cs" />
     <Compile Include="Owin\WindowsAuthenticationDefaults.cs" />
@@ -636,6 +641,7 @@
     <Content Include="Content\fonts\opensans-regular.ttf" />
     <Content Include="Content\fonts\opensans-regular.woff" />
     <Content Include="App_Data\.gitconfig" />
+    <Content Include="HISTORY.md" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Views\Repository\Blob.cshtml" />
     <Content Include="Views\Repository\Clone.cshtml" />
