@@ -21,7 +21,8 @@ namespace Bonobo.Git.Server.Infrastructure
         {
             string userName = filterContext.HttpContext.User.Identity.Name;
             var controller = filterContext.Controller.ToString();
-            Logger.Debug($"{userName} access {controller}|{filterContext.ActionDescriptor.ActionName}");
+            var requestPath = filterContext.HttpContext.Request.CurrentExecutionFilePath;
+            Logger.Debug($"{userName} access {controller}|{filterContext.ActionDescriptor.ActionName}|{requestPath}");
         }
     }
 }
