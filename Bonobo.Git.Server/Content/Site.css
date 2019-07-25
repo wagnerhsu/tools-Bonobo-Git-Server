@@ -185,3 +185,25 @@ h2.group .toggle.on:after { content: "\f055"; }
 img.repo-logo { width:36px; height: auto; image-rendering: -moz-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; -ms-interpolation-mode: nearest-neighbor; }
 
 .copy-to-clip-button {font-size: 12px; padding: 4px; }
+
+blockquote {
+    padding: 5px 5px;
+    margin: 0 0 20px;
+    border-left: 5px solid #0e2cc4;
+}
+
+pre {
+    border: 1px solid #1a1ad3
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 600;
+}
+
+table th {
+    color: #495057;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+

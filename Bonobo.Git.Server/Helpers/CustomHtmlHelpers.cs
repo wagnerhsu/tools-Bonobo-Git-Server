@@ -10,6 +10,10 @@ using System.Web.Routing;
 using System.Linq.Expressions;
 using Bonobo.Git.Server.Models;
 using System.ComponentModel.DataAnnotations;
+using Markdig;
+using Markdig.Extensions.JiraLinks;
+using Markdig.SemanticUi;
+using Markdig.SyntaxHighlighting;
 
 namespace Bonobo.Git.Server.Helpers
 {
@@ -22,7 +26,17 @@ namespace Bonobo.Git.Server.Helpers
 
         public static IHtmlString MarkdownToHtml(this HtmlHelper helper, string markdownText)
         {
-            return MvcHtmlString.Create(CommonMark.CommonMarkConverter.Convert(markdownText));
+            var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
+                .UseSoftlineBreakAsHardlineBreak()
+                .UseJiraLinks(new JiraLinkOptions("http://home.meehealth.com:8080"))
+                .UseSmartyPants()
+                .UseEmojiAndSmiley()
+                .UseSemanticUi()
+                .UseSyntaxHighlighting()
+                .Build();
+            var result = Markdown.ToHtml(markdownText, pipeline);
+            // CommonMark.CommonMarkConverter.Convert(markdownText)
+            return MvcHtmlString.Create(result);
         }
 
         public static MvcHtmlString DisplayEnum(this HtmlHelper helper, Enum e)
