@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31320.298
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bonobo.Git.Server", "Bonobo.Git.Server\Bonobo.Git.Server.csproj", "{6129B3FE-B282-4F6F-8836-8AF66602F8DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+		Test|Any CPU = Test|Any CPU
+		Test|Mixed Platforms = Test|Mixed Platforms
+		Test|x86 = Test|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Test|Any CPU.Build.0 = Test|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Test|Mixed Platforms.ActiveCfg = Test|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Test|Mixed Platforms.Build.0 = Test|Any CPU
+		{6129B3FE-B282-4F6F-8836-8AF66602F8DA}.Test|x86.ActiveCfg = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+		SolutionGuid = {B5E585B9-8200-40D4-80D8-6612CE8CD8A0}
+	EndGlobalSection
+EndGlobal
