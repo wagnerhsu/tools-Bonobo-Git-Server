@@ -124,7 +124,7 @@ Tags .tag a { background-color: rgba(148, 190, 214, 1); border-radius: 5px; colo
 .blob .controls a:hover { color: #4183c4; text-decoration: none;}
 .blob pre, .diff pre { font-size: 0.8em; word-wrap:normal; overflow: auto; margin: 0; padding: 0;}
 .blob pre code, .diff pre code { white-space: pre; background: transparent; margin: 0.5em;}
-/*.blob img {margin: 1em auto; display: block;}*/
+.blob img {margin: 1em auto; display: block;}
 
 .markdown { padding: 1em; }
 
@@ -185,28 +185,3 @@ h2.group .toggle.on:after { content: "\f055"; }
 img.repo-logo { width:36px; height: auto; image-rendering: -moz-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; -ms-interpolation-mode: nearest-neighbor; }
 
 .copy-to-clip-button {font-size: 12px; padding: 4px; }
-
-blockquote {
-    padding: 5px 5px;
-    margin: 0 0 20px;
-    border-left: 5px solid #0e2cc4;
-}
-
-pre {
-    border: 1px solid #1a1ad3
-}
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-    font-weight: 500;
-}
-
-
-table th {
-    color: #495057;
-    background-color: #e9ecef;
-    border-color: #dee2e6;
-}
-
-
-

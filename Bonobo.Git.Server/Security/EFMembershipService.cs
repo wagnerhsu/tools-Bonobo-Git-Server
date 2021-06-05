@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Bonobo.Git.Server.Data;
+﻿using Bonobo.Git.Server.Data;
 using Bonobo.Git.Server.Models;
-using System.Security.Cryptography;
+using Serilog;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity.Core;
-using Microsoft.Practices.Unity;
-using NLog;
+using System.Linq;
+using System.Security.Cryptography;
+using Unity;
 
 namespace Bonobo.Git.Server.Security
 {
     public class EFMembershipService : IMembershipService
     {
-        static ILogger Logger = LogManager.GetCurrentClassLogger();
         [Dependency]
         public Func<BonoboGitServerContext> CreateContext { get; set; }
 
@@ -46,7 +45,7 @@ namespace Bonobo.Git.Server.Security
             if (String.IsNullOrEmpty(username)) throw new ArgumentException("Value cannot be null or empty.", "username");
             if (String.IsNullOrEmpty(password)) throw new ArgumentException("Value cannot be null or empty.", "password");
 
-            Logger.Debug("EF: Validating user {UserName}", username);
+            Log.Verbose("EF: Validating user {UserName}", username);
 
             username = username.ToLowerInvariant();
             using (var database = CreateContext())
@@ -57,12 +56,12 @@ namespace Bonobo.Git.Server.Security
                     var result = _passwordService.ComparePassword(password, username, user.PasswordSalt, user.Password)
                         ? ValidationResult.Success
                         : ValidationResult.Failure;
-                    Logger.Debug("EF: User {UserName} validation result {Result}", username, result);
+                    Log.Verbose("EF: User {UserName} validation result {Result}", username, result);
                     return result;
                 }
                 else
                 {
-                    Logger.Warn("EF: Failed to find user {UserName}", username);
+                    Log.Warning("EF: Failed to find user {UserName}", username);
                 }
             }
             return ValidationResult.Failure;
@@ -140,7 +139,7 @@ namespace Bonobo.Git.Server.Security
                 GivenName = user.GivenName,
                 Surname = user.Surname,
                 Email = user.Email,
-             };
+            };
         }
 
         public UserModel GetUserModel(Guid id)
@@ -198,7 +197,7 @@ namespace Bonobo.Git.Server.Security
                     db.SaveChanges();
                 }
             }
-        } 
+        }
 
         private void SetPassword(User user, string password)
         {
@@ -227,6 +226,6 @@ namespace Bonobo.Git.Server.Security
             Buffer.BlockCopy(salt, 0, outputBytes, 1, SaltSize);
             Buffer.BlockCopy(subkey, 0, outputBytes, 1 + SaltSize, PBKDF2SubkeyLength);
             return Convert.ToBase64String(outputBytes);
-        }        
+        }
     }
 }

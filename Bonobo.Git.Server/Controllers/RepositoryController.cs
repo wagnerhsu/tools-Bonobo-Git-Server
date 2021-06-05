@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Web.Mvc;
-using Bonobo.Git.Server.App_GlobalResources;
+﻿using Bonobo.Git.Server.App_GlobalResources;
 using Bonobo.Git.Server.Configuration;
 using Bonobo.Git.Server.Data;
 using Bonobo.Git.Server.Data.Update;
@@ -13,14 +6,19 @@ using Bonobo.Git.Server.Helpers;
 using Bonobo.Git.Server.Models;
 using Bonobo.Git.Server.Security;
 using Ionic.Zip;
-using Microsoft.Practices.Unity;
 using MimeTypes;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Security.Principal;
-using Bonobo.Git.Server.Infrastructure;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Web.Mvc;
+using Unity;
 
 namespace Bonobo.Git.Server.Controllers
 {
-    [LogFilter]
     public class RepositoryController : Controller
     {
         [Dependency]
@@ -51,7 +49,8 @@ namespace Bonobo.Git.Server.Controllers
                                             .AsEnumerable();
             }
 
-            foreach(var item in firstList){
+            foreach (var item in firstList)
+            {
                 SetGitUrls(item);
             }
             var list = firstList
@@ -441,7 +440,8 @@ namespace Bonobo.Git.Server.Controllers
                 var commits = browser.GetTags(name, page, 10, out referenceName, out totalCount);
                 PopulateBranchesData(browser, referenceName);
                 ViewBag.TotalCount = totalCount;
-                return View(new RepositoryCommitsModel {
+                return View(new RepositoryCommitsModel
+                {
                     Commits = commits,
                     Name = repo.Name,
                     Logo = new RepositoryLogoDetailModel(repo.Logo)
@@ -502,7 +502,8 @@ namespace Bonobo.Git.Server.Controllers
                     }
                     commit.Links = links;
                 }
-                return View(new RepositoryCommitsModel {
+                return View(new RepositoryCommitsModel
+                {
                     Commits = commits,
                     Name = repo.Name,
                     Logo = new RepositoryLogoDetailModel(repo.Logo)
@@ -572,10 +573,10 @@ namespace Bonobo.Git.Server.Controllers
                         string sourceRepositoryPath = Path.Combine(UserConfiguration.Current.Repositories, source_repo.Name);
 
                         LibGit2Sharp.CloneOptions options = new LibGit2Sharp.CloneOptions()
-                            {
-                                IsBare = true,
-                                Checkout = false
-                            };
+                        {
+                            IsBare = true,
+                            Checkout = false
+                        };
 
                         LibGit2Sharp.Repository.Clone(sourceRepositoryPath, targetRepositoryPath, options);
 
@@ -619,7 +620,8 @@ namespace Bonobo.Git.Server.Controllers
                 var name = PathEncoder.Decode(encodedName);
                 string referenceName;
                 var commits = browser.GetHistory(path, name, out referenceName);
-                return View(new RepositoryCommitsModel {
+                return View(new RepositoryCommitsModel
+                {
                     Commits = commits,
                     Name = repo.Name,
                     Logo = new RepositoryLogoDetailModel(repo.Logo)
@@ -645,7 +647,7 @@ namespace Bonobo.Git.Server.Controllers
             {
                 model.Administrators = model.PostedSelectedAdministrators.Select(x => MembershipService.GetUserModel(x)).ToArray();
             }
-            model.PostedSelectedAdministrators =  new Guid[0];
+            model.PostedSelectedAdministrators = new Guid[0];
             model.PostedSelectedUsers = new Guid[0];
             model.PostedSelectedTeams = new Guid[0];
         }

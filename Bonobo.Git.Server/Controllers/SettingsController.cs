@@ -9,12 +9,10 @@ using System.Web.Configuration;
 using System.Web.Mvc;
 using Bonobo.Git.Server.App_GlobalResources;
 using Bonobo.Git.Server.Configuration;
-using Bonobo.Git.Server.Infrastructure;
 using Bonobo.Git.Server.Models;
 
 namespace Bonobo.Git.Server.Controllers
 {
-    [LogFilter]
     public class SettingsController : Controller
     {
         [WebAuthorize(Roles = Definitions.Roles.Administrator)]
